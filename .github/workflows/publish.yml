@@ -1,4 +1,4 @@
-name: Publish to Azure Artifacts
+name: Publish Package to Azure Artifacts
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'  # Change to your desired Python version
+          python-version: 3.8
 
       - name: Install dependencies
         run: |
@@ -27,4 +27,4 @@ jobs:
       - name: Build and publish package
         run: |
           python setup.py sdist bdist_wheel
-          twine upload --repository-url "https://pkgs.dev.azure.com/khimaja111/ADOdemo/_packaging/PythonPackage/pypi/upload" --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} dist/*
+          twine upload --repository-url "https://pkgs.dev.azure.com/khimaja111/ADOdemo/_packaging/PythonPackage/pypi/upload/" --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} dist/*
