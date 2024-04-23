@@ -29,7 +29,7 @@ jobs:
         working-directory: my_python_project/my_package
         run: |
           python setup.py sdist bdist_wheel
-          twine upload -r PythonPackage --config-file ../../.pypirc dist/*
+          twine upload -r PythonPackageTwine --config-file ../../.pypirc dist/*
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }}
