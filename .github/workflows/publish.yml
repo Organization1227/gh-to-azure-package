@@ -27,4 +27,4 @@ jobs:
       - name: Build and publish package
         run: |
           python setup.py sdist bdist_wheel
-          twine upload --repository-url "https://pkgs.dev.azure.com/{YOUR_ORG_NAME}/{YOUR_PROJECT_NAME}/_packaging/{YOUR_FEED_NAME}/pypi/upload" --username <USERNAME> --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} dist/*
+          twine upload --repository-url "https://pkgs.dev.azure.com/khimaja111/ADOdemo/_packaging/PythonPackage/pypi/upload" --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} dist/*
