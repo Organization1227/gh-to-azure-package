@@ -25,7 +25,7 @@ jobs:
           pip install setuptools wheel twine
 
       - name: Build and publish package
-        working-directory: ../my_python_project/my_package
+        working-directory: my_python_project/my_package
         run: |
           python setup.py sdist bdist_wheel
           twine upload --repository-url "https://pkgs.dev.azure.com/khimaja111/ADOdemo/_packaging/PythonPackage/pypi/upload/" --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} dist/*
