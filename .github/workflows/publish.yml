@@ -1,4 +1,4 @@
-name: Publish to Azure Artifacts
+name: Publish Package to Azure Artifacts
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,14 +17,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'  # Change to your desired Python version
+          python-version: 3.8  # Adjust the Python version as needed
 
-      - name: Install dependencies
+      - name: Install twine
         run: |
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
+          pip install twine
 
       - name: Build and publish package
+        working-directory: my_python_project/my_package
         run: |
           python setup.py sdist bdist_wheel
-          twine upload --repository-url "https://pkgs.dev.azure.com/{YOUR_ORG_NAME}/{YOUR_PROJECT_NAME}/_packaging/{YOUR_FEED_NAME}/pypi/upload" --username <USERNAME> --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} dist/*
+          twine upload -r PythonPackageTwine --config-file ../../.pypirc dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }}
