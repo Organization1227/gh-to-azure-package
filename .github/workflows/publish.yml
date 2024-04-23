@@ -1,0 +1,29 @@
+name: Publish to Azure Artifacts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Change to your desired Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine
+
+      - name: Build and publish package
+        run: |
+          python setup.py sdist bdist_wheel
+          twine upload --repository-url "https://pkgs.dev.azure.com/{YOUR_ORG_NAME}/{YOUR_PROJECT_NAME}/_packaging/{YOUR_FEED_NAME}/pypi/upload" --username <USERNAME> --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} dist/*
