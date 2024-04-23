@@ -19,13 +19,8 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install setuptools wheel twine
-
       - name: Build and publish package
         working-directory: my_python_project/my_package
         run: |
           python setup.py sdist bdist_wheel
-          twine upload --repository-url "https://pkgs.dev.azure.com/khimaja111/ADOdemo/_packaging/PythonPackage/pypi/upload/" --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} dist/*
+          twine upload --repository-url "https://pkgs.dev.azure.com/khimaja111/ADOdemo/_packaging/PythonPackage/pypi/upload/" --password ${{ secrets.AZURE_DEVOPS_FEED_API_KEY }} --username HIMAJA dist/*
