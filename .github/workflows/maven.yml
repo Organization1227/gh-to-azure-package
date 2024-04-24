@@ -1,0 +1,33 @@
+name: Maven Build and Publish to Azure Artifacts
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: Replace placeholders in settings.xml
+        working-directory: my_maven_project/my_mavenpackage
+        run: |
+          sed -i "s|\${env.AZURE_DEVOPS_USERNAME}|${{ secrets.AZURE_DEVOPS_USERNAME }}|g" ../../settings.xml
+          sed -i "s|\${env.AZURE_DEVOPS_FEED_API_KEY }|${{ secrets.AZURE_DEVOPS_TOKEN }}|g" ../../settings.xml
+
+      - name: Build with Maven
+        run: mvn -B package
+
+      - name: Publish to Azure Artifacts
+        run: mvn deploy
