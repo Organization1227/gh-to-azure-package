@@ -5,7 +5,7 @@
     <servers>
         <server>
             <id>mavenpackage</id>
-            <username>${env.AZURE_DEVOPS_USERNAME}</username>
+            <username>_token_</username>
             <password>${env.AZURE_DEVOPS_TOKEN}</password>
         </server>
     </servers>
