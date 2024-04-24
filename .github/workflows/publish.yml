@@ -2,9 +2,9 @@ name: Upload Package Version 2
 
 on:
   workflow_dispatch:  # Allows manual triggering of the workflow
-  push:
-    branches:
-      - main  # Adjust branch name if necessary
+  # push:
+  #   branches:
+  #     - main  # Adjust branch name if necessary
 
 jobs:
   upload:
