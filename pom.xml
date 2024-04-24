@@ -12,12 +12,7 @@
         <repository>
             <id>mavenpackage</id>
             <url>https://pkgs.dev.azure.com/khimaja111/_packaging/mavenpackage/maven/v1</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+      
         </repository>
     </distributionManagement>
     
