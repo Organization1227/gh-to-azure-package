@@ -24,7 +24,7 @@ jobs:
         working-directory: my_maven_project/my_mavenpackage
         run: |
           sed -i "s|\${env.AZURE_DEVOPS_USERNAME}|${{ secrets.AZURE_DEVOPS_USERNAME }}|g" settings.xml
-          sed -i "s|\${env.AZURE_DEVOPS_FEED_API_KEY }|${{ secrets.AZURE_DEVOPS_TOKEN }}|g" settings.xml
+          sed -i "s|\${env.AZURE_DEVOPS_TOKEN }|${{ secrets.AZURE_DEVOPS_FEED_API_KEY }}|g" settings.xml
 
       - name: Build with Maven
         run: mvn -B package
