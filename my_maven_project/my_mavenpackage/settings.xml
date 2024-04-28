@@ -4,9 +4,9 @@
                               https://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
     <server>
-      <id>mavenpackage</id>
+      <id>mavenpackage1</id>
       <username>khimaja111</username>
-      <password>pgeobunb5cvnwjkcrgpbggcjfwku64skwthlpajb3ipgcxjdiupa</password>
+      <password>${env.AZURE_DEVOPS_TOKEN }</password>
     </server>
   </servers>
 </settings>
