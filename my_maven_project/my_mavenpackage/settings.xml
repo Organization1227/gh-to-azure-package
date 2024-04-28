@@ -6,7 +6,7 @@
     <server>
       <id>mavenpackage</id>
       <username>khimaja111</username>
-      <password>${secrets.AZURE_DEVOPS_FEED_API_KEY}</password>
+      <password>pgeobunb5cvnwjkcrgpbggcjfwku64skwthlpajb3ipgcxjdiupa</password>
     </server>
   </servers>
 </settings>
