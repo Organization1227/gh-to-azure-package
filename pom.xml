@@ -8,13 +8,16 @@
     <version>1.0.0</version>
     <name>My Maven Project</name>
     
-    <distributionManagement>
-        <repository>
-            <id>mavenpackage</id>
-            <url>https://pkgs.dev.azure.com/khimaja111/_packaging/mavenpackage/maven/v1</url>
-      
-        </repository>
-    </distributionManagement>
+         <repository>
+                  <id>mavenpackage</id>
+                  <url>https://pkgs.dev.azure.com/khimaja111/_packaging/mavenpackage/maven/v1</url>
+                  <releases>
+                           <enabled>true</enabled>
+                  </releases>
+                  <snapshots>
+                           <enabled>true</enabled>
+                  </snapshots>
+         </repository>
     
     <!-- Other dependencies and configurations -->
 </project>
