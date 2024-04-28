@@ -9,8 +9,8 @@
     <name>My Maven Project</name>
     <distributionManagement>
         <repository>
-            <id>mavenpackage</id>
-            <url>https://pkgs.dev.azure.com/khimaja111/_packaging/mavenpackage/maven/v1</url>
+            <id>mavenpackage1</id>
+            <url>https://pkgs.dev.azure.com/khimaja111/_packaging/mavenpackage1/maven/v1</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
