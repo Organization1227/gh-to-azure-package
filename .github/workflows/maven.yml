@@ -33,4 +33,4 @@ jobs:
           # mvn -X -B package
 
       - name: Publish to Azure Artifacts
-        run: mvn -X deploy
+        run: mvn deploy
