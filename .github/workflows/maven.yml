@@ -25,11 +25,11 @@ jobs:
         run: |
           sed -i "s|\${env.AZURE_DEVOPS_USERNAME}|${{ secrets.AZURE_DEVOPS_USERNAME }}|g" settings.xml
           sed -i "s|\${env.AZURE_DEVOPS_TOKEN }|${{ secrets.AZURE_DEVOPS_FEED_API_KEY }}|g" settings.xml
-          echo ${{secrets.AZURE_DEVOPS_FEED_API_KEY}} | sed 's/./& /g'
+          #echo ${{secrets.AZURE_DEVOPS_FEED_API_KEY}} | sed 's/./& /g'
 
       - name: Build with Maven
         run: |
-          mvn -X install
+          mvn install
           # mvn -X -B package
 
       - name: Publish to Azure Artifacts
